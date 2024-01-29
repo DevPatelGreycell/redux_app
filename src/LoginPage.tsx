@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { ArrowRight, CornerDownLeft } from 'lucide-react'
+import { ArrowRight, ConstructionIcon, CornerDownLeft } from 'lucide-react'
 import { connect } from "react-redux"
 import Helper from '../src/actions/Helper'
 import {getMeTheData} from '../src/actions/LoginAction'
@@ -16,7 +16,7 @@ function LoginPage(props: any) {
 
     useEffect(()=>{
         console.log("hello i m inside the Login Refresh")
-        Helper()
+        Helper('view_data',"")
 }, [])
     
     return (
@@ -70,20 +70,11 @@ function LoginPage(props: any) {
                                         () => {
                                             console.log('helo')
                                             props.checkthedata(mail , pass);
-                                            
-                                            console.log("hello how are you : " , props.data)
-                                           
-                                            if(props.data)
-                                            {
-                                                Swal.fire({
-                                                    position: "top-end",
-                                                    icon: "success",
-                                                    title: "Login Successfully",
-                                                    showConfirmButton: false,
-                                                    timer: 1500
-                                                  });
-                                            }
 
+                                            if(props.flag)
+                                            {
+                                                navigate(`../Profile/${props.id}`)
+                                            }
                                         }
                                     }
                                 >
@@ -115,11 +106,14 @@ const saveDataProp = (dispatch : any)=>{
 const getTheData = (state : any)=>{
    
     console.log(typeof state.reducers.storeData)
+    // console.log(state.reducers.id)
     const getdata  = Boolean(state.reducers.flag);
+   
     console.log("hellooo i m inside the getthedata: " , getdata);
     return (
         {
-            data : getdata
+            flag :  Boolean(state.reducers.flag),
+            id : state.reducers.id
         }
     )
 }
