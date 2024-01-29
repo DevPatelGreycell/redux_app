@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Router } from 'lucide-react'
 import { connect } from "react-redux";
 import {adddata}from "../src/actions/action"
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-import App from "./App";
-import { statSync } from "fs";
 
 function SignUp(props : any)
 {
@@ -12,18 +12,21 @@ function SignUp(props : any)
     const [fullName , setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate();
 
     
     const saveData = ()=>{
 
+    // console.log("length of the list : " , JSON.parse(props.data).length  + 1);
     const SignUpDetails ={
         fullName : fullName,
         email : email,
         password : password
     }
 
-    props.addData(SignUpDetails);
-        
+    props.addData(SignUpDetails)
+    navigate("LoginPage")
+  
     }
     return(
         <section>
@@ -115,8 +118,6 @@ function SignUp(props : any)
           
           </div>
         </div>
-
-        <p>the data is : {props.data} </p>
       </section>
     )
 
@@ -124,12 +125,12 @@ function SignUp(props : any)
 
 const getstateDetails = (state: any)=>{
     
-    console.log("panch minute  ",state)
+    console.log("panch minute  ",state.reducers.flag)
 
     return (
 
         {
-            data  : JSON.stringify(state.reducers.storeData)
+            data : state.reducers.flag
         }
     )
 

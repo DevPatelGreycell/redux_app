@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "1710",
+      "fullName": "ssds",
+      "email": "sdsds",
+      "password": "sdsdsdsds"
+    },
+    {
+      "id": "e3e4",
+      "fullName": "xdfgds",
+      "email": "sfsfsfsfs",
+      "password": "sfsf"
+    },
+    {
+      "id": "8b84",
+      "fullName": "patel",
+      "email": "dev.patel@egreycell.com",
+      "password": "122444"
+    },
+    {
+      "id": "e998",
+      "fullName": "patel dev",
+      "email": "dev.patel@egreycell.coms",
+      "password": "sfsdsfs"
+    }
+  ]
+}
