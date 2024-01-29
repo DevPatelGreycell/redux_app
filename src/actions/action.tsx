@@ -1,10 +1,13 @@
+import Helper from "./Helper";
+
 export const adddata = (data : any)=>{
 
-    console.log("i m inside the action part : " , data);
+    const res = JSON.stringify(Helper("add_data",data))
+    console.log("i m inside the action part : " , data,res);
     return(
         {
             type : 'ADD_DATA',
-            data
+            res
         }
     )
 

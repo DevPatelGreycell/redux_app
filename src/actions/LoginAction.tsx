@@ -9,11 +9,13 @@ export const getMeTheData = (mail: any, pass: any) => {
     console.log(mail , pass);
     console.log("getMetheData: ", data)
     let flag = false;
+    let id = undefined;
     for (var i = 0; i < data.length; i++) {
         if(data[i]["email"] == mail && data[i]["password"] == pass)
         {
             console.log("i m inside the if : ");
             flag = true
+            id= data[i]["id"]
             break;
         }
         else
@@ -26,10 +28,12 @@ export const getMeTheData = (mail: any, pass: any) => {
 
     // console.log("hello action bhidu : :", data);
     return (
+        
         {
             type: 'View_Data',
             data,
-            flag
+            flag,
+            id
         }
     )
 };
