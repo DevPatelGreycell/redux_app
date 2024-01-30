@@ -7,7 +7,7 @@ import { lutimes, stat } from 'fs'
 interface Iprops {
     storeData: Array<String>
     flag: boolean,
-    id : String
+    id : any,
     res : any
 }
 

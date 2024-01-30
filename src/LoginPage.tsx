@@ -12,12 +12,23 @@ function LoginPage(props: any) {
 
     const [mail, setMail] = useState("");
     const [pass, setPass] = useState("");
+    const [count,setCount] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
         console.log("hello i m inside the Login Refresh")
-        Helper('view_data',"")
-}, [])
+        if(count == 0)
+        {
+            Helper('view_data',"")
+        }
+        else{
+            navigate(`../Profile/${props.id}`)
+        }
+        
+        setCount((count : any)=>{
+            return count+1
+        })
+}, [props.state])
     
     return (
 
@@ -69,12 +80,19 @@ function LoginPage(props: any) {
                                     onClick={
                                         () => {
                                             console.log('helo')
+                                            console.log("before: ",props.flag)
                                             props.checkthedata(mail , pass);
+                                            console.log("after : ",props.flag , props.id)
+                                           
+                                            
 
+                                             
                                             if(props.flag)
                                             {
-                                                navigate(`../Profile/${props.id}`)
+                                                console.log(".......g.........")
+                                             
                                             }
+                                            
                                         }
                                     }
                                 >
@@ -107,11 +125,14 @@ const getTheData = (state: any) => {
 
     console.log(typeof state.reducers.storeData)
     // console.log(state.reducers.id)
+    console.log(state.reducers)
     const getdata  = Boolean(state.reducers.flag);
+    console.log("id is :" , state.reducers.id);
    
     console.log("hellooo i m inside the getthedata: " , getdata);
     return (
         {
+            state : state.reducers,
             flag :  Boolean(state.reducers.flag),
             id : state.reducers.id
         }
