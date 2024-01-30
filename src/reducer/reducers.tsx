@@ -27,10 +27,11 @@ const appReducer = (state: Iprops = defaultStore, action: any) => {
     switch (action.type) {
 
         case 'ADD_DATA':
+            
             return (
                 {
                     ...state,
-                    res : action.res
+                    res : (action.check)?action.res:action.res
                 }
             )
 

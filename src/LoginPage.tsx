@@ -22,7 +22,11 @@ function LoginPage(props: any) {
             Helper('view_data',"")
         }
         else{
-            navigate(`../Profile/${props.id}`)
+            if(props.flag)
+            {
+                navigate(`../Profile/${props.id}`)
+            }
+            
         }
         
         setCount((count : any)=>{

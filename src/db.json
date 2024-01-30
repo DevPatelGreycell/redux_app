@@ -1,46 +1,10 @@
 {
   "users": [
     {
-      "id": "1710",
-      "fullName": "ssds",
-      "email": "sdsds",
-      "password": "sdsdsdsds"
-    },
-    {
-      "id": "e3e4",
-      "fullName": "xdfgds",
-      "email": "sfsfsfsfs",
-      "password": "sfsf"
-    },
-    {
-      "id": "8b84",
-      "fullName": "patel",
-      "email": "dev.patel@egreycell.com",
-      "password": "122444"
-    },
-    {
-      "id": "e998",
+      "id": "ab2e",
       "fullName": "patel dev",
-      "email": "dev.patel@egreycell.coms",
-      "password": "sfsdsfs"
-    },
-    {
-      "id": "89a5",
-      "fullName": "sfsf",
-      "email": "fdfdsf",
-      "password": "sfsdfsdf"
-    },
-    {
-      "id": "29f3",
-      "fullName": "test",
-      "email": "test",
-      "password": "test"
-    },
-    {
-      "id": "5e15",
-      "fullName": "bb",
-      "email": "bb",
-      "password": "bb"
+      "email": "dev440715@gmail.com",
+      "password": "123456"
     }
   ]
 }
