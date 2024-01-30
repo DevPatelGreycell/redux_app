@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react"
 import { ArrowRight, CornerDownLeft } from 'lucide-react'
 import { connect } from "react-redux"
 import Helper from '../src/actions/Helper'
-import {getMeTheData} from '../src/actions/LoginAction'
+import { getMeTheData } from '../src/actions/LoginAction'
 import { get } from "http"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom"
 import { flattenDiagnosticMessageText } from "typescript"
 
 function LoginPage(props: any) {
-    
-    const[mail ,setMail] = useState("");
-    const[pass ,setPass] = useState("");
+
+    const [mail, setMail] = useState("");
+    const [pass, setPass] = useState("");
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("hello i m inside the Login Refresh")
         Helper()
-}, [])
-    
+    }, [])
+
     return (
 
         <section>
@@ -37,7 +37,7 @@ function LoginPage(props: any) {
                                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                         type="email"
                                         placeholder="Email"
-                                        onChange={(e :any)=>{
+                                        onChange={(e: any) => {
                                             setMail(e.target.value)
                                         }}
                                     ></input>
@@ -55,7 +55,7 @@ function LoginPage(props: any) {
                                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                         type="password"
                                         placeholder="Password"
-                                        onChange={(e :any)=>{
+                                        onChange={(e: any) => {
                                             setPass(e.target.value)
                                         }}
                                     >
@@ -69,21 +69,20 @@ function LoginPage(props: any) {
                                     onClick={
                                         () => {
                                             console.log('helo')
-                                            props.checkthedata(mail , pass);
-                                            
-                                            console.log("hello how are you : " , props.data)
-                                           
-                                            if(props.data)
-                                            {
+                                            props.checkthedata(mail, pass);
+
+                                            console.log("hello how are you : ", props.data)
+
+                                            if (props.data) {
                                                 Swal.fire({
                                                     position: "top-end",
                                                     icon: "success",
                                                     title: "Login Successfully",
                                                     showConfirmButton: false,
                                                     timer: 1500
-                                                  });
+                                                });
                                             }
-
+                                                
                                         }
                                     }
                                 >
@@ -95,34 +94,34 @@ function LoginPage(props: any) {
 
                 </div>
             </div>
-            
+
         </section>
-       
+
     )
 }
 
-const saveDataProp = (dispatch : any)=>{
+const saveDataProp = (dispatch: any) => {
 
     return (
         {
-            checkthedata : (mail  : any, pass : any) => dispatch(getMeTheData(mail , pass))    
+            checkthedata: (mail: any, pass: any) => dispatch(getMeTheData(mail, pass))
         }
     )
 }
 
 
 
-const getTheData = (state : any)=>{
-   
+const getTheData = (state: any) => {
+
     console.log(typeof state.reducers.storeData)
-    const getdata  = Boolean(state.reducers.flag);
-    console.log("hellooo i m inside the getthedata: " , getdata);
+    const getdata = Boolean(state.reducers.flag);
+    console.log("hellooo i m inside the getthedata: ", getdata);
     return (
         {
-            data : getdata
+            data: getdata
         }
     )
 }
 
 
-export default connect(getTheData,saveDataProp)(LoginPage);
+export default connect(getTheData, saveDataProp)(LoginPage);
