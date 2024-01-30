@@ -6,13 +6,16 @@ import { lutimes, stat } from 'fs'
 
 interface Iprops {
     storeData: Array<String>
-    flag: boolean
+    flag: boolean,
+    id : String
+    res : any
 }
 
 const defaultStore = {
     storeData: [],
     flag: false,
-
+    id :"",
+    res : undefined
 }
 
 
@@ -26,38 +29,23 @@ const appReducer = (state: Iprops = defaultStore, action: any) => {
         case 'ADD_DATA':
             return (
                 {
-                    ...state
+                    ...state,
+                    res : action.res
                 }
             )
 
         case 'View_Data':
-                    console.log("i m reducer : " , typeof(action.data))
+                    console.log("i m reducer : " , typeof(action.data) , action.id , action.flag)
                     return (
                     {
                        ...state,
                        storeData : action.data,
-                       flag : action.flag
+                       flag : action.flag,
+                       id : JSON.stringify(action.id)
+                       
                     }
                 )
     
-
-
-
-      
-
-            return (
-                {
-                    ...state,
-               
-                }
-            )
-
-
-
-
-
-
-
         default:
             return state
     }
