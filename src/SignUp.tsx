@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { adddata } from "../src/actions/action";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import saveDetails from '../src/actions/storeData'
 import { isPropertySignature } from "typescript";
 
 
@@ -13,37 +14,33 @@ function SignUp(props: any) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate();
-  const [cnt , setCnt] = useState(0);
-  const [color,setColor] = useState("flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50")
-  const [className , setClassName] = useState('');
-  
-  
+  const [cnt, setCnt] = useState(0);
+  const [color, setColor] = useState("flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50")
+  const [className, setClassName] = useState('');
+
+
   let colorhelo = "flex h-10 w-full rounded-md border border-grey-800 bg-transparent px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-  useEffect(()=>{
-    if(cnt == 0)
-    {
-          console.log("first refresh")
-               
-    } 
-    else
-    { 
-    if(props.data)
-      {
-       
-          console.log("i m inside the red part.....")
-          setColor("flex h-10 w-full rounded-md border border-red-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-red-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50")    
-        }
-      else
-      {
-        
+  useEffect(() => {
+    if (cnt == 0) {
+      console.log("first refresh")
+
+    }
+    else {
+      if (props.data) {
+
+        console.log("i m inside the red part.....")
+        setColor("flex h-10 w-full rounded-md border border-red-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-red-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50")
+      }
+      else {
+
         console.log("hello i m inside the green part..")
-        setColor("flex h-10 w-full rounded-md border border-green-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-green-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50")    
+        setColor("flex h-10 w-full rounded-md border border-green-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-green-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50")
       }
     }
-    setCnt((cnt : any)=>{
+    setCnt((cnt: any) => {
       return cnt + 1
     })
-  },[props.state])
+  }, [props.state])
 
 
   const saveData = () => {
@@ -55,7 +52,7 @@ function SignUp(props: any) {
       password: password
     }
 
-    props.addData(SignUpDetails , "add_data")
+    props.addData(SignUpDetails, "add_data")
 
     alert(`just see the changes :   ${props.data}`)
     setTimeout(() => {
@@ -92,14 +89,14 @@ function SignUp(props: any) {
                 <div className="mt-2">
                   <input
                     className={color}
-                    style={{borderColor : "2px solid red"}}
+                    style={{ borderColor: "2px solid red" }}
                     type="text"
                     placeholder="Full Name"
                     id="name"
                     onChange={(e: any) => {
                       setFullName(e.target.value)
-                      props.addData(e.target.value , "onchange_Data")
-                      
+                      props.addData(e.target.value, "onchange_Data")
+
                     }}
                   ></input>
                 </div>
@@ -146,15 +143,13 @@ function SignUp(props: any) {
                   type="button"
                   className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                   onClick={() => {
-                    if(color == "green" || color=="grey")
-                    {
+                    if (color == "green" || color == "grey") {
                       saveData()
                     }
-                    else
-                    {
+                    else {
                       alert("username is alredy there..")
                     }
-                    
+
                   }}
                 >
                   Create Account <ArrowRight className="ml-2" size={16} />
@@ -172,11 +167,11 @@ function SignUp(props: any) {
 
 const getstateDetails = (state: any) => {
 
-  console.log("panch minute  ", typeof state.reducers.res , state.reducers.res)
+  console.log("panch minute  ", typeof state.reducers.res, state.reducers.res)
 
   return (
     {
-      state : state.reducers,
+      state: state.reducers,
       data: state.reducers.res
     }
   )
@@ -189,8 +184,9 @@ const saveDataToState = (dispatch: any) => {
   return (
     {
       addData: (data: any, flag: any) => {
-        console.log("my flag is: ",flag)
-        dispatch(adddata(data , flag));
+        saveDetails.setData(data)
+        console.log("my flag is: ", flag)
+        dispatch(adddata(data, flag));
       }
     }
   )

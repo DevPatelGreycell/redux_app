@@ -30,6 +30,10 @@ export default function Helper(req: any , data : any) {
                             }).then(response => response.json()).then(data => data )
                             
                 case 'onchange_Data':
+
+                        
+                        
+
                         console.log('i m inside the onchange..')
                         const url = 'https://api.github.com/search/users';
                         return fetch(`${url}?q=${data}+in:login&page=1&per_page=10`)

@@ -3,6 +3,7 @@ import Helper from '../actions/Helper'
 import { get } from 'http'
 import { getTTFB } from 'web-vitals'
 import { lutimes, stat } from 'fs'
+import debounceHolder from '../actions/debounceHolder'
 
 interface Iprops {
     storeData: Array<String>
@@ -27,7 +28,9 @@ const appReducer = (state: Iprops = defaultStore, action: any) => {
     switch (action.type) {
 
         case 'ADD_DATA':
+            // const data = debounceHolder.getData()
             
+
             return (
                 {
                     ...state,
