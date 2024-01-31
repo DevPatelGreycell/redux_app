@@ -1,3 +1,4 @@
+import adddata from './action'
 export default class saveDetails {
 
     static state = {
@@ -11,8 +12,8 @@ export default class saveDetails {
 
     static getData = ()=>{
         setTimeout(() => {
-            return this.state.data    
-        }, 500);
+            adddata(this.state.data , "onchange_Data")    
+        }, 100);
         
     }
 

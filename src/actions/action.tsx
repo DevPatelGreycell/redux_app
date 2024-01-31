@@ -192,6 +192,7 @@ export const adddata = (data: any, flag: any) => {
     }
 
 
+
 }
  
 
@@ -208,7 +209,7 @@ function debouncing(data: any, flag: any, check: any, timeRef: any) {
         }, 500)
     })
 
-    
+
 }
 
 function middle(finalData: any, flag: any, check: any, timeRef: any) {

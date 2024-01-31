@@ -186,7 +186,7 @@ const saveDataToState = (dispatch: any) => {
       addData: (data: any, flag: any) => {
         saveDetails.setData(data)
         console.log("my flag is: ", flag)
-        dispatch(adddata(data, flag));
+        // dispatch(adddata(data, flag));
       }
     }
   )

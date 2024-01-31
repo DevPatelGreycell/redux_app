@@ -53,8 +53,7 @@ const appReducer = (state: Iprops = defaultStore, action: any) => {
         default:
             return state
     }
-
-
+    
 }
 
 
