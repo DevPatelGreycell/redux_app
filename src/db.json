@@ -1,76 +1,10 @@
 {
   "users": [
     {
-      "id": "1710",
-      "fullName": "ssds",
-      "email": "sdsds",
-      "password": "sdsdsdsds"
-    },
-    {
-      "id": "e3e4",
-      "fullName": "xdfgds",
-      "email": "sfsfsfsfs",
-      "password": "sfsf"
-    },
-    {
-      "id": "8b84",
-      "fullName": "patel",
-      "email": "dev.patel@egreycell.com",
-      "password": "122444"
-    },
-    {
-      "id": "e998",
+      "id": "ab2e",
       "fullName": "patel dev",
-      "email": "dev.patel@egreycell.coms",
-      "password": "sfsdsfs"
-    },
-    {
-      "id": "596c",
-      "fullName": "patel dev",
-      "email": "faffdsadasa",
-      "password": "5433324"
-    },
-    {
-      "id": "2c34",
-      "fullName": "patel dev ashishbhai",
       "email": "dev440715@gmail.com",
       "password": "123456"
-    },
-    {
-      "id": "8ea9",
-      "fullName": "test",
-      "email": "test",
-      "password": "test"
-    },
-    {
-      "id": "8011",
-      "fullName": "t",
-      "email": "t",
-      "password": "t"
-    },
-    {
-      "id": "9a3b",
-      "fullName": "d",
-      "email": "d",
-      "password": "d"
-    },
-    {
-      "id": "cefc",
-      "fullName": "te",
-      "email": "te",
-      "password": "te"
-    },
-    {
-      "id": "22ee",
-      "fullName": "yn",
-      "email": "yn",
-      "password": "yn"
-    },
-    {
-      "id": "febc",
-      "fullName": "nb",
-      "email": "nb",
-      "password": "nb"
     }
   ]
 }

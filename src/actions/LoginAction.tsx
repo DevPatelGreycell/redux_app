@@ -6,6 +6,7 @@ import Holder from '../actions/Holder'
 export const getMeTheData = (mail: any, pass: any) => {
 
     const data = Holder.giveData();
+    console.log("data is from the action:"  ,data)
     console.log(mail , pass);
     console.log("getMetheData: ", data)
     let flag = false;

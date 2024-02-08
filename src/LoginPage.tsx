@@ -2,22 +2,37 @@ import React, { useEffect, useState } from "react"
 import { ArrowRight, ConstructionIcon, CornerDownLeft } from 'lucide-react'
 import { connect } from "react-redux"
 import Helper from '../src/actions/Helper'
-import {getMeTheData} from '../src/actions/LoginAction'
+import { getMeTheData } from '../src/actions/LoginAction'
 import { get } from "http"
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom"
 import { flattenDiagnosticMessageText } from "typescript"
 
 function LoginPage(props: any) {
-    
-    const[mail ,setMail] = useState("");
-    const[pass ,setPass] = useState("");
+
+    const [mail, setMail] = useState("");
+    const [pass, setPass] = useState("");
+    const [count,setCount] = useState(0);
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("hello i m inside the Login Refresh")
-        Helper('view_data',"")
-}, [])
+        if(count == 0)
+        {
+            Helper('view_data',"")
+        }
+        else{
+            if(props.flag)
+            {
+                navigate(`../Profile/${props.id}`)
+            }
+            
+        }
+        
+        setCount((count : any)=>{
+            return count+1
+        })
+}, [props.state])
     
     return (
 
@@ -37,7 +52,7 @@ function LoginPage(props: any) {
                                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                         type="email"
                                         placeholder="Email"
-                                        onChange={(e :any)=>{
+                                        onChange={(e: any) => {
                                             setMail(e.target.value)
                                         }}
                                     ></input>
@@ -55,7 +70,7 @@ function LoginPage(props: any) {
                                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                         type="password"
                                         placeholder="Password"
-                                        onChange={(e :any)=>{
+                                        onChange={(e: any) => {
                                             setPass(e.target.value)
                                         }}
                                     >
@@ -69,12 +84,19 @@ function LoginPage(props: any) {
                                     onClick={
                                         () => {
                                             console.log('helo')
+                                            console.log("before: ",props.flag)
                                             props.checkthedata(mail , pass);
+                                            console.log("after : ",props.flag , props.id)
+                                           
+                                            
 
+                                             
                                             if(props.flag)
                                             {
-                                                navigate(`../Profile/${props.id}`)
+                                                console.log(".......g.........")
+                                             
                                             }
+                                            
                                         }
                                     }
                                 >
@@ -86,32 +108,35 @@ function LoginPage(props: any) {
 
                 </div>
             </div>
-            
+
         </section>
-       
+
     )
 }
 
-const saveDataProp = (dispatch : any)=>{
+const saveDataProp = (dispatch: any) => {
 
     return (
         {
-            checkthedata : (mail  : any, pass : any) => dispatch(getMeTheData(mail , pass))    
+            checkthedata: (mail: any, pass: any) => dispatch(getMeTheData(mail, pass))
         }
     )
 }
 
 
 
-const getTheData = (state : any)=>{
-   
+const getTheData = (state: any) => {
+
     console.log(typeof state.reducers.storeData)
     // console.log(state.reducers.id)
+    console.log(state.reducers)
     const getdata  = Boolean(state.reducers.flag);
+    console.log("id is :" , state.reducers.id);
    
     console.log("hellooo i m inside the getthedata: " , getdata);
     return (
         {
+            state : state.reducers,
             flag :  Boolean(state.reducers.flag),
             id : state.reducers.id
         }
@@ -119,4 +144,4 @@ const getTheData = (state : any)=>{
 }
 
 
-export default connect(getTheData,saveDataProp)(LoginPage);
+export default connect(getTheData, saveDataProp)(LoginPage);
